@@ -1,0 +1,17 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+
+
+{% if latest_poll_list %}
+	<ul>
+		{% for poll in latest_poll_list %}
+		<li> <a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a> </li>
+						<!-- acel polls este namespace-ul din mysite/urls.py
+						   	 iar detail este numele din polls/urls.py, si ii dam parametrul poll.id 
+						  -->
+		{% endfor %}
+	</ul>
+{% else %}
+	<p> No polls are available. </p>
+{% endif %}
