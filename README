@@ -1,2 +1,8 @@
 
 Django Sample Poll App from djangoproject.com
+
+								django-admin.py startproject mysite
+								python manage.py runserver
+								python manage.py startapp nume_app
+								python manage.py sql appname
+								python manage.py syncdb
