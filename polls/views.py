@@ -19,7 +19,7 @@ def index(request):
 
 def detail(request, poll_id):
 	try:
-		poll = Poll.objects.get(pk = poll_id)
+		poll = Poll.objects.get(pk=poll_id)
 	except Poll.DoesNotExist:
 		raise Http404
 	context = {'poll': poll}
@@ -27,18 +27,18 @@ def detail(request, poll_id):
 
 
 def results(request, poll_id):
-	poll = get_object_or_404(Poll, pk = poll_id)
+	poll = get_object_or_404(Poll, pk=poll_id)
 	context = {'poll': poll}
 	return render(request, 'polls/results.html', context)
 
 
 def vote(request, poll_id):
 	try:
-		p = Poll.objects.get(pk = poll_id)
+		p = Poll.objects.get(pk=poll_id)
 	except Poll.DoesNotExist:
 		raise Http404
 	try:
-		selected_choice = p.choice_set.get(pk = request.POST['choice'])
+		selected_choice = p.choice_set.get(pk=request.POST['choice'])
 		# request.POST['choice'] returns the ID of the selected choice, 
 		# as a string. request.POST values are always strings.
 	except (KeyError, Choice.DoesNotExist):
